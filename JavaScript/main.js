@@ -1,6 +1,7 @@
 
 var flightNS = {};
 
+
 (function(flightNS) {
 
 function Flight(id, from, to, date) {
