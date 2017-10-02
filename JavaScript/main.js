@@ -1,4 +1,8 @@
 
+var flightNS = {};
+
+(function(flightNS) {
+
 function Flight(id, from, to, date) {
     this.id = id;
     this.from = from;
@@ -64,11 +68,20 @@ ExtendedFlightManager.prototype.add = function(f) {
     FlightManager.prototype.add.call(this, f);
 }
 
+    flightNS.FlightManager = FlightManager;
+    flightNS.ExtendedFlightManager = ExtendedFlightManager;
+    flightNS.Flight = Flight;
+
+})(flightNS);
+
+
+var Flight = flightNS.Flight;
+
 var f1 = new Flight(1, 'Graz', 'Flagranti', '2017-10-12T17:00+01:00');
-var f2 = new Flight(2, 'Graz', 'Kognito', '2017-10-12T17:30+01:00');
+var f2 = new flightNS.Flight(2, 'Graz', 'Kognito', '2017-10-12T17:30+01:00');
 
 // var fm = new FlightManager([]);
-var fm = new ExtendedFlightManager([], 1);
+var fm = new flightNS.ExtendedFlightManager([], 1);
 
 fm.add(f1);
 // fm.add(f2);
